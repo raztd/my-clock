@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- todo: handle url params  -->
+
+<head>
+    <title>hello, world!</title>
+    <script>
+        onload = () => {
+            setTitle()
+            setInterval(setTitle, 500)
+        }
+
+        setTitle = () => document.title = getTime()
+
+        getTime = () => {
+            timeOpt = { hour: "numeric", minute: "numeric" }
+            if (isChecked("i01")) timeOpt["second"] = "numeric"
+            timeOpt["hour12"] = isChecked("i02")
+            return new Date().toLocaleTimeString('en-GB', timeOpt)
+        }
+
+        isChecked = (id) => document.getElementById(id).checked
+    </script>
+</head>
+
+<body>
+    <div>
+        <label><input id="i01" type="checkbox" checked onchange="setTitle()">show seconds</label><br>
+        <label><input id="i02" type="checkbox" onchange="setTitle()">12-hour format</label>
+    </div>
+</body>
+
+</html>
